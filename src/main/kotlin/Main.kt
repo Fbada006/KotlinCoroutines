@@ -2,9 +2,17 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import module3.runWithGlobalScope
+import module3.runWithLocalScope
 
 fun main(args: Array<String>) {
-    printHelloWorldRunBlocking()
+    runBlocking {
+        launch {
+            // runWithLocalScope()
+            runWithGlobalScope()
+            println("runWithGlobalScope returned")
+        }
+    }
 }
 
 fun printHelloWorldGlobalScope() {
