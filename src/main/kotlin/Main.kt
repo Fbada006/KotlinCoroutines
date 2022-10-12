@@ -1,17 +1,15 @@
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import module3.runWithGlobalScope
 import module3.runWithLocalScope
+import module4.dowWorkOne
+import module4.dowWorkTwo
 
 fun main(args: Array<String>) {
     runBlocking {
-        launch {
-            // runWithLocalScope()
-            runWithGlobalScope()
-            println("runWithGlobalScope returned")
-        }
+        val res1 = async { dowWorkOne() }
+        val res2 = async { dowWorkTwo() }
+
+        println("The res is ${res1.await() + res2.await()} ")
     }
 }
 
